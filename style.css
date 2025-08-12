@@ -1,0 +1,892 @@
+/* --- CSS CODE --- */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+body {
+  margin: 0;
+  background-color: #000000;
+  background-size: 40px 40px;
+  color: #cfc7a9;
+  font-family: 'Russo One', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* --- Main container for scenes --- */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+  background: rgba(0, 22, 28, 0.75);
+  border-radius: 16px;
+  box-shadow:
+    0 0 20px #00ffd8,
+    inset 0 0 40px #008f92;
+  position: relative;
+  user-select: text;
+}
+
+/* Subtle ring shimmer around main container */
+main.electric-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+main.electric-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 3px;
+  background: linear-gradient(120deg, #66e6e6, #37545e, #264b4b, #212525);
+  background-size: 200% 200%;
+  animation: electricPulse 1.5s infinite linear;
+  filter: blur(8px);
+  mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+main.electric-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0,255,255,0.15);
+  z-index: -2;
+}
+@keyframes electricPulse {
+  0% { background-position: 50% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 50% 50%; }
+}
+
+/* --- Scene title --- */
+main h3 {
+  font-size: 2.6rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #cada40;
+  text-shadow:
+    0 0 10px #00ffd8,
+    0 0 30px #00a2a2,
+    0 0 40px #00f0ff;
+  animation: glitchText 2.5s infinite;
+}
+
+/* Text glitch animation */
+@keyframes glitchText {
+  0%, 100% {
+    text-shadow:
+      2px 0 #00ffd8,
+      -2px 0 #00aaff,
+      1px 1px #00e0c6;
+    transform: translate(0,0);
+  }
+  10% {
+    text-shadow:
+      -2px 0 #00c2ff,
+      2px 0 #00d8ff,
+      -1px -1px #00e0c6;
+    transform: translate(-2px, 0);
+  }
+  20% {
+    text-shadow:
+      2px 0 #00ffd8,
+      -2px 0 #00aaff;
+    transform: translate(2px, 1px);
+  }
+  30% {
+    text-shadow:
+      1px 1px #00e0c6;
+    transform: translate(0, -1px);
+  }
+  40% {
+    text-shadow:
+      2px 0 #00ffd8,
+      -2px 0 #00aaff,
+      1px 1px #00e0c6;
+    transform: translate(-1px, 0);
+  }
+  50% {
+    text-shadow:
+      0 0 10px #00ffd8;
+    transform: translate(0, 0);
+  }
+  60%, 70% {
+    text-shadow:
+      3px 0 #00ffd8,
+      -3px 0 #00aaff;
+    transform: translate(3px, 0);
+  }
+  80% {
+    text-shadow:
+      2px 0 #00ffd8,
+      -2px 0 #00aaff;
+    transform: translate(0, 1px);
+  }
+  90% {
+    text-shadow:
+      1px 1px #00e0c6;
+    transform: translate(0, 0);
+  }
+}
+
+/* --- Paragraph text --- */
+main p {
+  font-weight: 500;
+  font-size: 1.15rem;
+  max-width: 720px;
+  margin: 1rem auto;
+  color: #fdffa0;
+  text-align: center;
+}
+
+/* --- Slider container --- */
+.slider-container {
+  margin: 3rem auto 0;
+  width: 100%;
+}
+
+/* --- Slider styling --- */
+input[type="range"] {
+  width: 100%;
+  height: 18px;
+  border-radius: 10px;
+  background: #00575b;
+  box-shadow: inset 0 0 12px #00ffe0;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+input[type="range"]:hover {
+  box-shadow: inset 0 0 20px #00ffd8;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: #00ffe0;
+  border: 2px solid #00a3a3;
+  border-radius: 50%;
+  box-shadow:
+    0 0 8px #00ffd8,
+    0 0 20px #00e0cc;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: #00ffe0;
+  border-radius: 50%;
+  border: 2px solid #00a3a3;
+  box-shadow:
+    0 0 8px #00ffd8,
+    0 0 20px #00e0cc;
+  cursor: pointer;
+}
+
+/* --- Navigation buttons container --- */
+.nav-buttons {
+  margin: 3rem auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* --- Buttons --- */
+button {
+  flex: 1 1 140px;
+  max-width: 240px;
+  padding: 1.2rem 0;
+  border: 2px solid #00ffe0;
+  border-radius: 40px;
+  background: transparent;
+  color: #00ffe0;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px #00ffe0aa;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+/* Button shine effect */
+button::before {
+  content: '';
+  position: absolute;
+  top: -120%;
+  left: -45%;
+  width: 200%;
+  height: 300%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+  transform: rotate(25deg);
+  transition: top 0.6s ease;
+  z-index: 1;
+}
+
+
+.scene {
+  position: absolute;
+  display: none;  /* hidden by default */
+  min-height: 90vh; /* adjust height */
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  box-sizing: border-box;
+  color: #cfc7a9;
+  font-family: 'Russo One', sans-serif;
+  background: transparent;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.scene.active {
+  display: block;
+}
+
+/* Background inside each scene */
+.scene-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* if img */
+  background-size: cover; /* if bg-image */
+  background-position: center;
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 0;
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+}
+
+
+/* Example distinct backgrounds for scenes */
+.scene[data-scene="1"] .scene-bg {
+  background: linear-gradient(135deg, #004d60, #003842);
+}
+
+.scene[data-scene="2"] .scene-bg {
+  background: linear-gradient(135deg, #004d60, #003842);
+}
+
+.scene[data-scene="3"] .scene-bg {
+  background: linear-gradient(135deg, #004d60, #003842);
+}
+
+.scene[data-scene="4"] .scene-bg {
+  background: linear-gradient(135deg, #004d60, #003842);
+}
+
+.scene[data-scene="5"] .scene-bg {
+  background: linear-gradient(135deg, #004d60, #003842);
+}
+
+.scene[data-scene="6"] .scene-bg {
+  background: linear-gradient(135deg, #004d60, #003842);
+}
+
+.scene[data-scene="7"] .scene-bg {
+  background: linear-gradient(135deg, #004d60, #003842);
+}
+
+.scene[data-scene="8"] .scene-bg {
+  background: linear-gradient(135deg, #004d60, #003842);
+}
+
+.scene[data-scene="9"] .scene-bg {
+  background: linear-gradient(135deg, #004d60, #003842);
+}
+
+.scene[data-scene="10"] .scene-bg {
+  background: linear-gradient(135deg, #004d60, #003842);
+}
+
+
+/* 1.2@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+/* Folder-dot pattern background */
+#bgPattern {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: #070f0f88;
+
+  background-image:
+    radial-gradient(circle 1.5px at 8px 10px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 12px 10px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 16px 10px, #00ffff33 98%, transparent 99%),
+
+    radial-gradient(circle 1.5px at 6px 14px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 10px 14px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 14px 14px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 18px 14px, #00ffff33 98%, transparent 99%),
+
+    radial-gradient(circle 1.5px at 4px 18px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 8px 18px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 12px 18px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 16px 18px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 20px 18px, #00ffff33 98%, transparent 99%),
+
+    radial-gradient(circle 1.5px at 2px 22px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 6px 22px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 10px 22px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 14px 22px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 18px 22px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 22px 22px, #00ffff33 98%, transparent 99%),
+
+    radial-gradient(circle 1.5px at 0px 26px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 4px 26px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 8px 26px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 12px 26px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 16px 26px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 20px 26px, #00ffff33 98%, transparent 99%),
+    radial-gradient(circle 1.5px at 24px 26px, #00ffff33 98%, transparent 99%);
+  background-repeat: repeat;
+  background-size: 32px 32px;
+}
+
+/* Container for content */
+#container {
+  position: relative;
+  height: 101vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 2rem;
+  z-index: 10;
+}
+
+/* Title */
+#title {
+  font-size: 5vw;
+  font-weight: 900;
+  color: #0ff;
+  text-shadow:
+    0 0 5px #0ff,
+    0 0 10px #0ff,
+    0 0 20px #00ffffaa,
+    0 0 30px #00ffff77,
+    0 0 40px #00ffff55;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  animation: glitchText 2s infinite;
+}
+
+/* Subtitle */
+#subtitle {
+  font-size: 1.8vw;
+  font-weight: 400;
+  color: #55ffffcc;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 5px #55ffffaa;
+  white-space: nowrap;
+  animation: flickerText 3s infinite;
+}
+
+/* Glitch Animations */
+@keyframes glitchText {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+      0 0 5px #0ff,
+      0 0 10px #0ff,
+      0 0 20px #00ffffaa,
+      0 0 30px #00ffff77,
+      0 0 40px #00ffff55;
+    color: #0ff;
+    transform: translate(0);
+  }
+  20%, 22%, 24%, 55% {
+    text-shadow:
+      -2px 0 red,
+      2px 0 cyan;
+    color: #0ff;
+    transform: translate(calc(-2px + 1px * var(--rand)), calc(1px - 1px * var(--rand)));
+  }
+}
+
+@keyframes flickerText {
+  0%, 100% {opacity: 1;}
+  45%, 55% {opacity: 0.7;}
+  50% {opacity: 0.2;}
+}
+
+/* Slider container */
+.slider-container {
+  width: 320px;
+  max-width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Navigation buttons container */
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Next/Prev Buttons & Hotspot Button */
+button {
+  background: none;
+  border: 1.5px solid #00ffff;
+  color: #0ff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 6px;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.hotspot:hover:not(:disabled) {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="10"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+
+}
+
+button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Scene text */
+#sceneText {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  max-width: 700px;
+  text-align: center;
+  line-height: 1.4;
+  color: #0ff;
+  text-shadow:
+    0 0 8px #003842
+    0 0 16px #00ffffaa;
+  user-select: text;
+}
+
+/* 1.4(not satisfied)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+.logo {
+  position: relative;
+  font-size: 6rem;
+  color: #0ff;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  user-select: none;
+}
+
+.logo .fixed {
+  position: relative;
+  z-index: 5;
+}
+
+.logo .glitch-container {
+  position: relative;
+  display: inline-block;
+  color: #0ff;
+  z-index: 10;
+}
+
+/* Base text */
+.logo .glitch-text {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  animation: none;
+}
+
+/* Different colored layers for RGB glitch */
+.logo .glitch-text.red {
+  color: rgb(224, 238, 30);
+  animation: glitch-red 2s infinite;
+  clip-path: inset(0 0 0 0);
+  mix-blend-mode: screen;
+}
+
+.logo .glitch-text.cyan {
+  color: rgb(212, 209, 6);
+  animation: glitch-cyan 2s infinite;
+  clip-path: inset(0 0 0 0);
+  mix-blend-mode: screen;
+}
+
+/* The default text */
+.logo .glitch-text.main {
+  position: relative;
+  color: #0ff;
+}
+
+/* 1.5(NS)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+.hidden {
+  display: none;
+  margin-top: 1rem;
+  background: rgba(0, 51, 51, 0.5);
+  padding: 1rem;
+  border-radius: 8px;
+  color: #33ffffcc;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  user-select: text;
+}
+
+/* Buttons style inside interactive sprites */
+#scene1-sprites button {
+  background: transparent;
+  border: 1.5px solid #33ffff;
+  color: #33ffff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  margin: 0.5rem 1rem 1rem 0;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#scene1-sprites button:hover,
+#scene1-sprites button:focus {
+  background-color: #33ffff33;
+  outline: none;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.scenefit-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* hotspots */
+
+/* Scene 1 Hotspots */
+.hotspot.photo {
+  position: absolute;
+  top: 60%;   
+  left: 37%; 
+  width: 10px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.hotspot.window {
+  position: absolute;
+  top: 34%;   
+  left: 45%;  
+  width: 35px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+  border-radius: 700px;
+  cursor: pointer;
+}
+
+.hotspot.tv {
+  position: absolute;
+  top: 38%;   
+  left: 74%;  
+  width: 35px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Scene 2 Hotspots */
+.hotspot.mirror {
+  position: absolute;
+  top: 29%;   
+  left: 33%;  
+  width: 35px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.hotspot.tap {
+  position: absolute;
+  top: 47%;   
+  left: 30%;  
+  width: 35px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.hotspot.shard {
+  position: absolute;
+  top: 70%;   
+  left: 58%;  
+  width: 35px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Scene 3 Hotspots */
+.hotspot.letter {
+  position: absolute;
+  top: 50%;   
+  left: 48%;  
+  width: 35px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+  border-radius: 50%;
+  cursor: pointer;
+}
+.hotspot.tear {
+  position: absolute;
+  top: 50%;   
+  left: 47.5%;  
+  width: 35px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Scene 4 Hotspots */
+.hotspot.bed {
+  position: absolute;
+  top: 48%;   
+  left: 64.5%;  
+  width: 35px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Scene 5 Hotspots */
+.hotspot.vision {
+  position: absolute;
+  top: 48%;   
+  left: 34.5%;  
+  width: 35px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  /* Soft glow effect */
+  background: radial-gradient(circle, rgba(228, 231, 21, 0.8) 50%, rgba(255,255,255,0) 70%);
+  box-shadow: 0 0 1000px rgba(255, 255, 255, 0.6);
+
+  /* Animation for dream-like breathing */
+  animation: dreamPulse 3.5s infinite ease-in-out;
+}
+
+@keyframes dreamPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Scene 6 Hotspots */
+
+.hotspot {
+  position: absolute;
+  top: 48%;   
+  left: 34.5%;  
+  width: 35px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.hotspot.speakers {
+  display: block;
+  position: absolute;
+  top: 38%;   
+  left: 27.5%;  
+  width: 35px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+
+/* Scene 7 Hotspots */
+
+.hotspot.vision {
+  display: block;
+  position: absolute;
+  top: 38%;   
+  left: 27.5%;  
+  width: 35px;
+  height: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="cyan" stroke="black" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="10" ry="6"/><circle cx="12" cy="12" r="3" fill="yellow"/></svg>');
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+  #dialoguePopup {
+  width: 95%;
+  max-width: 1200px;  /* allow big container */
+  /* other styles */
+}
+
+#dialogueSpeakerImage {
+  width: 500px;      /* big, reasonable size */
+  height: auto;
+  max-width: none;   /* let it grow */
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.7);
+  flex-shrink: 0;
+}
+
+
+
+#dialogueSpeaker, #dialogueText {
+  flex: 1;                 /* Text takes remaining space */
+}
+
+#dialogueText {
+  white-space: normal; /* allow wrapping */
+  word-wrap: break-word; /* break long words if needed */
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+/* Modal popup overlay */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #111;
+  padding: 1.5rem;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  color: #0ff;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 10px; right: 10px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #0ff;
+  cursor: pointer;
+}
+
+/* Modal starts hidden */
+.modal.hidden {
+  display: none;
+}
+
+/* Show modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Blur-to-clear animation */
+@keyframes unblur {
+  0% {
+    filter: blur(6px);
+  }
+  100% {
+    filter: blur(0);
+  }
+}
+
+.modal-content {
+  background: #111;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  animation: unblur 0.8s ease forwards;
+  max-width: 600px;
+  width: 90%;
+}
+
+.modal-content img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+/* 1.6(NS)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
